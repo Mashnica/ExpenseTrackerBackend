@@ -1,0 +1,18 @@
+{
+  "name": "expense-tracker-backend-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "y",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.vegaitsourcing.rs/masa.micunovic/expense-tracker-backend-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
