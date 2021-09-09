@@ -12,7 +12,11 @@ incomeGroupRouter.get('/',function(req,res){
 
 
 //get by id 
-//...
+incomeGroupRouter.get('/:id',function (req,res){
+    //search by id in array incomes
+    const result  = incomeGroups.find(incomeGroup=> incomeGroup.id === req.params.id)
+    res.json(result);
+});
 //post
 incomeGroupRouter.post('/', (req,res) => {
     //res.send('Add income groups')
@@ -24,12 +28,32 @@ incomeGroupRouter.post('/', (req,res) => {
 });
 
 //put
-incomeGroupRouter.put('/income-groups', (req,res) => {
-    res.send('Edit income group ')
+incomeGroupRouter.put('/:id', (req,res) => {
+    incomeGroups = incomeGroups.map(incomeGroup  => {
+        if(incomeGroup.id === req.params.id){
+            if(req.body.name){
+              incomeGroup.name = req.body.name;
+              incomeGroups.push(incomeGroup)
+              res.json(incomeGroups)
+              
+            }
+            if(req.body.description){
+                
+                incomeGroup.description= req.body.name;
+                  
+            }
+
+         return incomeGroup;
+        }
+        else {
+        return incomeGroup;
+        }
+    });
 });
 //delete
-incomeGroupRouter.delete('/income-group', (req,res) =>{
-    res.delete('Delete income group ')
+incomeGroupRouter.delete('/:id', (req,res) =>{
+    incomeGroups = incomeGroups.filter(incomeGroup => incomeGroup.id !== req.params.id);
+        res.json(incomeGroups);
 });
 
 
