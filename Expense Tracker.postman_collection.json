@@ -142,13 +142,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/expenses/5151257e-5cd2-4be5-a372-5606156403a5",
+							"raw": "{{URL}}/expenses/3a9e5750-dd6a-44b4-bf34-2ea6f493bcfa",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"expenses",
-								"5151257e-5cd2-4be5-a372-5606156403a5"
+								"3a9e5750-dd6a-44b4-bf34-2ea6f493bcfa"
 							]
 						}
 					},
@@ -187,7 +187,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"description\":\"travel expens889\",\r\n   \"amount\":\"300\",\r\n   \"expense-group\":\"4abab1b8-b6dc-4c71-9328-5e581285f5be\"\r\n\r\n}",
+							"raw": "{\r\n   \"description\":\"travel expens8891111\",\r\n   \"amount\":\"300\",\r\n   \"expense-group\":\"4abab1b8-b6dc-4c71-9328-5e581285f5be\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -195,13 +195,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/expenses/43f0b41b-c6cc-4763-b728-cb144c4b5031",
+							"raw": "{{URL}}/expenses/3a9e5750-dd6a-44b4-bf34-2ea6f493bcfa",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"expenses",
-								"43f0b41b-c6cc-4763-b728-cb144c4b5031"
+								"3a9e5750-dd6a-44b4-bf34-2ea6f493bcfa"
 							]
 						}
 					},
@@ -303,9 +303,18 @@
 				{
 					"name": "New Request",
 					"request": {
-						"method": "GET",
+						"method": "DELETE",
 						"header": [],
-						"url": null
+						"url": {
+							"raw": "{{URL}}/income-groups/f80b238b-a889-4db3-887a-48c9c3735abc",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"income-groups",
+								"f80b238b-a889-4db3-887a-48c9c3735abc"
+							]
+						}
 					},
 					"response": []
 				}
@@ -313,7 +322,114 @@
 		},
 		{
 			"name": "income",
-			"item": []
+			"item": [
+				{
+					"name": "get all incomes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/incomes",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"incomes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id income",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/incomes/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"incomes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add income",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"description\":\"travel expense\",\r\n   \"amount\":\"303\",\r\n   \"income-group\":\"4abab1b8-b6dc-4c71-9328-5e581285f5be\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/incomes",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"incomes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit income",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"description\":\"travel expense\",\r\n   \"amount\":\"303\",\r\n   \"income-group\":\"4abab1b8-b6dc-4c71-9328-5e581285f5be\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/incomes/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"incomes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete income",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/incomes/bb8f9559-4a4a-4b64-b03c-ea255db20dbd",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"incomes",
+								"bb8f9559-4a4a-4b64-b03c-ea255db20dbd"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [

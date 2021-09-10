@@ -33,17 +33,16 @@ incomeGroupRouter.put('/:id', (req,res) => {
         if(incomeGroup.id === req.params.id){
             if(req.body.name){
               incomeGroup.name = req.body.name;
-              incomeGroups.push(incomeGroup)
-              res.json(incomeGroups)
+              
               
             }
             if(req.body.description){
-                
-                incomeGroup.description= req.body.name;
+              incomeGroup.description= req.body.name;
                   
             }
-
-         return incomeGroup;
+        incomeGroups.push(incomeGroup)
+        res.json(incomeGroup)
+        return incomeGroup;
         }
         else {
         return incomeGroup;
@@ -53,7 +52,8 @@ incomeGroupRouter.put('/:id', (req,res) => {
 //delete
 incomeGroupRouter.delete('/:id', (req,res) =>{
     incomeGroups = incomeGroups.filter(incomeGroup => incomeGroup.id !== req.params.id);
-        res.json(incomeGroups);
+    res.json(incomeGroups);
+ 
 });
 
 

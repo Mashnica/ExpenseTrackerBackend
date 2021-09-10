@@ -31,19 +31,20 @@ expenseRouter.put('/:id', (req,res) => {
         if(expense.id === req.params.id){
             if(req.body.description){
               expense.description = req.body.description;
-              expenses.push(expense)
-              res.json(expenses)
+              
               
             }
             if(req.body.amount){
                 expense.amount= req.body.amount;
                   
             }
-        
-         return expenses;
+          
+        expenses.push(expense)
+        res.json(expense)
+        return expense;
         }
         else {
-        return expenses;
+        return expense;
         }
     });
 });

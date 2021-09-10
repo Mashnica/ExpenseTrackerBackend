@@ -27,10 +27,6 @@ app.use("/incomes", incomesRouter)
 app.listen(3000)
 
 
-// const expenseGroupes = []
-// const router = new Router()
-// ...
-// app.use("/expense-groups", router)
 /*app.listen(port,()=>{
    console.log('Example app listening at http://localhost:${ port }')
 })*/

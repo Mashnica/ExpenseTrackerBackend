@@ -1,6 +1,7 @@
 const express = require ('express')
 const incomesRouter = express.Router()
 const incomes =[] //name, amount, incomegroupID
+const { uuid } = require('uuidv4');
 
 //get all
 incomesRouter.get('/',function(req,res){
@@ -19,33 +20,33 @@ incomesRouter.get('/:id',function (req,res){
 //post
 incomesRouter.post('/', (req,res) => {
     //res.send('Add income ')
-    const incomes = req.body;
-    incomes.id = uuid() 
-    incomes.push(expensegroup)
-    res.json(incomes);
+    const income = req.body;
+    income.id = uuid() 
+    incomes.push(income)
+    res.json(income);
     
 });
 
 //put 
 incomesRouter.put('/:id', (req,res) => {
     //res.send('Edit incomes  ')
-    incomes = incomes.map(incomes => {
-        if(incomes.id === req.params.id){
+    incomes = incomes.map(income => {
+        if(income.id === req.params.id){
             if(req.body.amount){
-              incomes.amount = req.body.amount;
-              incomes.push(incomes)
-              res.json(incomes)
+              income.amount = req.body.amount;
+              
               
             }
             if(req.body.description){
-                incomes.description= req.body.description;
+                income.description= req.body.description;
                   
             }
-
-         return incomes;
+        incomes.push(income)
+        res.json(income)
+         return income;
         }
         else {
-        return incomes;
+        return income;
         }
     });
 
