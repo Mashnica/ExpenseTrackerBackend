@@ -2,7 +2,7 @@ const express = require ('express')
 const incomesRouter = express.Router()
 const incomes =[] 
 const { uuid } = require('uuidv4');
-
+const incomeModel = require("../models/incomes");
 
 incomesRouter.get('/',function(req,res){
     
@@ -58,4 +58,4 @@ incomesRouter.delete('/:id', (req,res) =>{
         res.json(incomes);
 });
 
-module.exports= incomesRouter
+module.exports= incomesRouter;

@@ -2,7 +2,7 @@ const express = require('express')
 const incomeGroupRouter = express.Router()
 const incomeGroups = [] 
 const { uuid } = require('uuidv4');
-
+const incomegroupModel = require("../models/income-groups");
 
 
 incomeGroupRouter.get('/',function(req,res){
@@ -57,4 +57,4 @@ incomeGroupRouter.delete('/:id', (req,res) =>{
 });
 
 
-module.exports= incomeGroupRouter
+module.exports= incomeGroupRouter;

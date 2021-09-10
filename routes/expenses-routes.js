@@ -2,7 +2,7 @@ const express = require ('express')
 const expenseRouter = express.Router()
 let expenses =[] 
 const { uuid } = require('uuidv4');
-
+const expenseModel = require("../models/expenses");
     
 
 expenseRouter.get('/',function(req,res){
@@ -55,4 +55,5 @@ expenseRouter.delete('/:id', (req,res) =>{
         res.json(expenses);
 });
 
-module.exports= expenseRouter
+module.exports= expenseRouter;
+
