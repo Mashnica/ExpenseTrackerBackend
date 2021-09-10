@@ -1,0 +1,461 @@
+{
+	"info": {
+		"_postman_id": "4a8ce939-b27c-403d-ab8e-727f6342b7ad",
+		"name": "Expense Tracker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "expense-groups",
+			"item": [
+				{
+					"name": "get all expense-groups",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/expense-groups",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"expense-groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id expense-group",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/expense-groups/dfc5a6bb-0b37-4d66-a562-a10822d9cab3",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"expense-groups",
+								"dfc5a6bb-0b37-4d66-a562-a10822d9cab3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add new expense-group",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"travelend\",\r\n    \"description\":\"expense travefdsfdsl\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/expense-groups",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"expense-groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete expense-group",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/expense-groups/4abab1b8-b6dc-4c71-9328-5e581285f5be",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"expense-groups",
+								"4abab1b8-b6dc-4c71-9328-5e581285f5be"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit expense-group",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"travel2\",\r\n    \"description\":\"expense travelewww\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/expense-groups/ea7990cf-242d-45b6-abcb-401769441a62",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"expense-groups",
+								"ea7990cf-242d-45b6-abcb-401769441a62"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "expense",
+			"item": [
+				{
+					"name": "get all expenses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/expenses",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"expenses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id expense",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/expenses/3a9e5750-dd6a-44b4-bf34-2ea6f493bcfa",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"expenses",
+								"3a9e5750-dd6a-44b4-bf34-2ea6f493bcfa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add new expense",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"description\":\"travel expense\",\r\n   \"amount\":\"303\",\r\n   \"expense-group\":\"4abab1b8-b6dc-4c71-9328-5e581285f5be\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/expenses",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"expenses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit expense",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"description\":\"travel expens8891111\",\r\n   \"amount\":\"300\",\r\n   \"expense-group\":\"4abab1b8-b6dc-4c71-9328-5e581285f5be\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/expenses/3a9e5750-dd6a-44b4-bf34-2ea6f493bcfa",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"expenses",
+								"3a9e5750-dd6a-44b4-bf34-2ea6f493bcfa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete expense",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/expenses/8e27cf07-49a9-4bd5-aa48-4bed886bc2de",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"expenses",
+								"8e27cf07-49a9-4bd5-aa48-4bed886bc2de"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "income-groups",
+			"item": [
+				{
+					"name": "get all income groups",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/income-groups",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"income-groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id income groups",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/income-groups/653c2264-9fb8-4b8c-9f05-bd62809fecde",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"income-groups",
+								"653c2264-9fb8-4b8c-9f05-bd62809fecde"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add a new income group",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"tratrablaaa\",\r\n    \"description\":\"income project\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/income-groups",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"income-groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit income group",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/income-groups/f80b238b-a889-4db3-887a-48c9c3735abc",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"income-groups",
+								"f80b238b-a889-4db3-887a-48c9c3735abc"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "income",
+			"item": [
+				{
+					"name": "get all incomes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/incomes",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"incomes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id income",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/incomes/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"incomes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add income",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"description\":\"travel expense\",\r\n   \"amount\":\"303\",\r\n   \"income-group\":\"4abab1b8-b6dc-4c71-9328-5e581285f5be\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/incomes",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"incomes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit income",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"description\":\"travel expense\",\r\n   \"amount\":\"303\",\r\n   \"income-group\":\"4abab1b8-b6dc-4c71-9328-5e581285f5be\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/incomes/",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"incomes",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete income",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/incomes/bb8f9559-4a4a-4b64-b03c-ea255db20dbd",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"incomes",
+								"bb8f9559-4a4a-4b64-b03c-ea255db20dbd"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://localhost:3000"
+		}
+	]
+}
