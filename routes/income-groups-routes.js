@@ -1,58 +1,64 @@
 const express = require('express')
 const incomeGroupRouter = express.Router()
 const incomeGroups = [] 
-const { uuid } = require('uuidv4');
 const incomegroupModel = require("../models/income-groups");
 
 
-incomeGroupRouter.get('/',function(req,res){
+incomeGroupRouter.get('/',async(req,res) =>{
     
-    res.json(incomeGroups);
+    const incomegroups  = await incomegroupModel.find({});
+      try {
+        res.send(incomegroups);
+      } catch (error) {
+        res.status(500).send(error);
+      }
   });
 
 
 
-incomeGroupRouter.get('/:id',function (req,res){
+incomeGroupRouter.get('/:id',async (req,res)=>{
     
-    const result  = incomeGroups.find(incomeGroup=> incomeGroup.id === req.params.id)
-    res.json(result);
+    const incomegroups = await incomegroupModel.findOne({id:req.params.id});
+         try{
+            res.send(incomegroups)
+         }catch(error){
+           res.status(500).send(error);
+         }
 });
 
-incomeGroupRouter.post('/', (req,res) => {
+incomeGroupRouter.post('/', async(req,res) => {
   
-    const incomegroup = req.body;
-    incomegroup.id = uuid() 
-    incomeGroups.push(incomegroup)
-    res.json(incomegroup);
+    const incomegroups = new incomegroupModel(req.body);
+        try {
+            await incomegroups.save();
+            res.send(incomegroups);
+          } catch (error) {
+            res.status(500).send(error);
+          }
     
 });
 
 
-incomeGroupRouter.put('/:id', (req,res) => {
-    incomeGroups = incomeGroups.map(incomeGroup  => {
-        if(incomeGroup.id === req.params.id){
-            if(req.body.name){
-              incomeGroup.name = req.body.name;
-              
-              
-            }
-            if(req.body.description){
-              incomeGroup.description= req.body.name;
-                  
-            }
-        incomeGroups.push(incomeGroup)
-        res.json(incomeGroup)
-        return incomeGroup;
-        }
-        else {
-        return incomeGroup;
-        }
-    });
+incomeGroupRouter.put('/:id', async(req,res) => {
+    var query = {'id': req.params.id};
+    newData = req.body;
+    const incomegroups = await incomegroupModel.findOneAndUpdate(query, req.body);
+      try {
+       await incomegroups.save();
+        res.send(incomegroups);
+      } catch (error) {
+        res.status(500).send(error);
+      }
 });
 
-incomeGroupRouter.delete('/:id', (req,res) =>{
-    incomeGroups = incomeGroups.filter(incomeGroup => incomeGroup.id !== req.params.id);
-    res.json(incomeGroups);
+incomeGroupRouter.delete('/:id', async(req,res) =>{
+    const incomegroups =  await incomegroupModel.deleteOne({id:req.params.id});
+        try {
+          res.send(incomegroups);
+         } catch (error) {
+           res.status(500).send(error);
+         }
+ 
  
 });
 

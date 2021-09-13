@@ -1,58 +1,62 @@
 const express = require ('express')
 const expenseRouter = express.Router()
 let expenses =[] 
-const { uuid } = require('uuidv4');
 const expenseModel = require("../models/expenses");
     
 
-expenseRouter.get('/',function(req,res){
+expenseRouter.get('/',async(req,res)=>{
     
-    res.json(expenses);
+    const expenses  = await expenseModel.find({});
+    try {
+      res.send(expenses);
+    } catch (error) {
+      res.status(500).send(error);
+    }
   });
 
-expenseRouter.get('/:id',function (req,res){
+expenseRouter.get('/:id',async(req,res)=>{
     
-    const result  = expenses.find(expense=> expense.id === req.params.id)
-    res.json(result);
+    const expenses = await expenseModel.findOne({id:req.params.id});
+    try{
+       res.send(expenses)
+    }catch(error){
+      res.status(500).send(error);
+    }
 });
 
 
-expenseRouter.post('/', (req,res) => {
+expenseRouter.post('/', async(req,res) => {
    
-    const expense = req.body;
-    expense.id = uuid() 
-    expenses.push(expense)
-    res.json(expense);
-    
+    const expenses = new expenseModel(req.body);
+    try {
+        await expenses.save();
+        res.send(expenses);
+      } catch (error) {
+        res.status(500).send(error);
+      }
 });
  
-expenseRouter.put('/:id', (req,res) => {
-    expenses = expenses.map(expense  => {
-        if(expense.id === req.params.id){
-            if(req.body.description){
-              expense.description = req.body.description;
-              
-              
-            }
-            if(req.body.amount){
-                expense.amount= req.body.amount;
-                  
-            }
-          
-        expenses.push(expense)
-        res.json(expense)
-        return expense;
-        }
-        else {
-        return expense;
-        }
-    });
+expenseRouter.put('/:id', async(req,res) => {
+    var query = {'id': req.params.id};
+    newData = req.body;
+    const expenses = await expenseModel.findOneAndUpdate(query, req.body);
+      try {
+       await expenses.save();
+        res.send(expenses);
+      } catch (error) {
+        res.status(500).send(error);
+      }
 });
 
 
-expenseRouter.delete('/:id', (req,res) =>{
-    expenses = expenses.filter(expense => expense.id !== req.params.id);
-        res.json(expenses);
+expenseRouter.delete('/:id', async (req,res) =>{
+    const expenses =  await expenseModel.deleteOne({id:req.params.id});
+    try {
+      res.send(expenses);
+     } catch (error) {
+       res.status(500).send(error);
+     }
+
 });
 
 module.exports= expenseRouter;

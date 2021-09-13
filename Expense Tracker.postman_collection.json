@@ -294,14 +294,32 @@
 				{
 					"name": "edit income group",
 					"request": {
-						"method": "GET",
+						"method": "PUT",
 						"header": [],
-						"url": null
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"tratrablaaa35345345646\",\r\n    \"description\":\"income project\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/income-groups/613f1878db857b01f193d403",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"income-groups",
+								"613f1878db857b01f193d403"
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "delete income group",
 					"request": {
 						"method": "DELETE",
 						"header": [],

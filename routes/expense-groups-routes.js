@@ -1,7 +1,6 @@
 const express = require('express')
 const expenseGroupRouter = express.Router()
 let expenseGroups = [] 
-const { uuid } = require('uuidv4');
 const expensegroupModel = require("../models/expense-group");
 
 
@@ -13,19 +12,23 @@ const expensegroupModel = require("../models/expense-group");
         res.status(500).send(error);
       }
     });
-      //res.json(expenseGroups);
+      
    
-     expenseGroupRouter.get('/:id',function (req,res){
+     expenseGroupRouter.get('/:id',async(req,res)=>{
          
-         const result  = expenseGroups.find(expenseGroup => expenseGroup.id === req.params.id)
-         res.json(result);
+         
+         const expensegroups = await expensegroupModel.findOne({id:req.params.id});
+         try{
+            res.send(expensegroups)
+         }catch(error){
+           res.status(500).send(error);
+         }
+         
      });
 
     
     expenseGroupRouter.post('/', async (req,res) => {
         const expensegroup = new expensegroupModel(req.body);
-        //const expensegroup = req.body;
-        //expensegroup.id = uuid()
         try {
             await expensegroup.save();
             res.send(expensegroup);
@@ -36,50 +39,36 @@ const expensegroupModel = require("../models/expense-group");
     });
 
  
-    expenseGroupRouter.put('/:id', (req,res) => {
-        expenseGroups = expenseGroups.map(expenseGroup  => {
-            if(expenseGroup.id === req.params.id){
-                if(req.body.name){
-                  expenseGroup.name = req.body.name;
-                
-                  
-                }
-                if(req.body.description){
-
-                    expenseGroup.description= req.body.description;
-                      
-                }
-            expenseGroups.push(expenseGroup)
-            res.json(expenseGroup)
-            return expenseGroup;
-            }
-            else {
-            return expenseGroup;
-            }
-        });
+    expenseGroupRouter.put('/:id', async (req,res) => {
+      var query = {'id': req.params.id};
+      newData = req.body;
+      const expensegroup = await expensegroupModel.findOneAndUpdate(query, req.body);
+        try {
+         await expensegroup.save();
+          res.send(expensegroup);
+        } catch (error) {
+          res.status(500).send(error);
+        }
+      
+      });
+      
        
-    });
+ 
 
     
-    expenseGroupRouter.delete('/:id', (req,res) =>{
-        expenseGroups = expenseGroups.filter(expenseGroup => expenseGroup.id !== req.params.id);
-        res.json(expenseGroups);
+    expenseGroupRouter.delete('/:id', async(req,res) =>{
+        const expensegroups =  await expensegroupModel.deleteOne({id:req.params.id});
+        try {
+          res.send(expensegroups);
+         } catch (error) {
+           res.status(500).send(error);
+         }
+ 
+       
         
     });
    
-    
-   /* 
-    //get endpoint
-    app.get("/expense-groups", async (request, response) => {
-        const expensegroups = await expensegroupsModel.find({});
-      
-        try {
-          response.send(expensegroups);
-        } catch (error) {
-          response.status(500).send(error);
-        }
-      });
-      */
+  
 
 
     module.exports= expenseGroupRouter;
