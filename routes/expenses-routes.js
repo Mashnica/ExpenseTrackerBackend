@@ -13,6 +13,17 @@ expenseRouter.get('/',async(req,res)=>{
       res.status(500).send(error);
     }
   });
+//find by expense-group 
+expenseRouter.get('/expensegroup/:expensegroupId', async (req,res) =>{
+    const expenses  = await expenseModel.find({expenseGroup:req.params.expensegroupId}); 
+    try {
+      res.send(expenses);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  });
+ 
+
 
 expenseRouter.get('/:id',async(req,res)=>{
     
@@ -24,9 +35,7 @@ expenseRouter.get('/:id',async(req,res)=>{
     }
 });
 
-
 expenseRouter.post('/', async(req,res) => {
-   
     const expenses = new expenseModel(req.body);
     try {
         await expenses.save();
@@ -38,7 +47,7 @@ expenseRouter.post('/', async(req,res) => {
  
 expenseRouter.put('/:id', async(req,res) => {
     var query = {'id': req.params.id};
-    newData = req.body;
+     newData = req.body;
     const expenses = await expenseModel.findOneAndUpdate(query, req.body);
       try {
        await expenses.save();

@@ -12,8 +12,7 @@ const expensegroupModel = require("../models/expense-group");
         res.status(500).send(error);
       }
     });
-      
-   
+    
      expenseGroupRouter.get('/:id',async(req,res)=>{
          
          

@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+
 const ExpensesSchema = new mongoose.Schema({
   
   description: {
@@ -9,6 +10,10 @@ const ExpensesSchema = new mongoose.Schema({
   amount: {
     type: Number,
     default:0,
+  },
+  expenseGroup: {
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'ExpenseGroups'
   },
 });
 

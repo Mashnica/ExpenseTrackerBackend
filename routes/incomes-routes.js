@@ -24,6 +24,18 @@ incomesRouter.get('/:id',async(req,res)=>{
     }
 });
 
+//find by income-group 
+incomesRouter.get('/incomegroup/:incomegroupId', async (req,res) =>{
+    const incomes  = await incomeModel.find({incomeGroup:req.params.incomegroupId}); 
+    try {
+      res.send(incomes);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+  });
+ 
+
+
 
 incomesRouter.post('/', async(req,res) => {
     

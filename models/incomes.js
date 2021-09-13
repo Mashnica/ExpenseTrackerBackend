@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+//require
 
 const IncomesSchema = new mongoose.Schema({
   
@@ -9,6 +10,10 @@ const IncomesSchema = new mongoose.Schema({
   amount: {
     type: Number,
     default:0,
+  },
+  incomeGroup: {
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'IncomeGroups' 
   },
 });
 
