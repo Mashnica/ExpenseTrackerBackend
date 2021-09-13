@@ -24,7 +24,7 @@ incomesRouter.get('/:id',async(req,res)=>{
     }
 });
 
-//find by income-group 
+//find by income-group d
 incomesRouter.get('/incomegroup/:incomegroupId', async (req,res) =>{
     const incomes  = await incomeModel.find({incomeGroup:req.params.incomegroupId}); 
     try {

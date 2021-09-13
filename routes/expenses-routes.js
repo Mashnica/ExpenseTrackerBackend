@@ -13,7 +13,7 @@ expenseRouter.get('/',async(req,res)=>{
       res.status(500).send(error);
     }
   });
-//find by expense-group 
+//find by expense-group d
 expenseRouter.get('/expensegroup/:expensegroupId', async (req,res) =>{
     const expenses  = await expenseModel.find({expenseGroup:req.params.expensegroupId}); 
     try {
