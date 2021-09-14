@@ -6,9 +6,16 @@ const expenseRouter = require("./routes/expenses-routes.js");
 const incomeGroupRouter = require("./routes/income-groups-routes.js");
 const incomesRouter = require("./routes/incomes-routes.js");
 const mongoose = require("mongoose");
+const config = require('./config');
 
-mongoose.connect("mongodb://localhost:27017/expensetrackerdb", {});
-app.use(express.json());
+/*mongoose.connect("mongodb://localhost:27017/expensetrackerdb", {});
+app.use(express.json());*/
+
+const { db: { host, port, name } } = config;
+const connectionString = `mongodb://${host}:${port}/${name}`;
+mongoose.connect(connectionString);
+
+
 
 app.get("/", (req, res) => {
   res.send("Hello world!!");
@@ -21,6 +28,8 @@ app.use("/incomes", incomesRouter);
 
 app.use(Router);
 
-app.listen(3000, () => {
+
   console.log("Server is running at port 3000");
-});
+
+
+app.listen(config.app.port);
