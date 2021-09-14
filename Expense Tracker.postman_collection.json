@@ -242,6 +242,24 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "get last-five expenses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/expenses/last-five-expenses",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"expenses",
+								"last-five-expenses"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -481,6 +499,15 @@
 								"613f441334ac5ff92a4e83a5"
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "get last five incomes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
 					},
 					"response": []
 				}
