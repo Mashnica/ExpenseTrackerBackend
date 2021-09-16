@@ -142,13 +142,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/expenses/3a9e5750-dd6a-44b4-bf34-2ea6f493bcfa",
+							"raw": "{{URL}}/expenses/613f183bdb857b01f193d3fb",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"expenses",
-								"3a9e5750-dd6a-44b4-bf34-2ea6f493bcfa"
+								"613f183bdb857b01f193d3fb"
 							]
 						}
 					},
@@ -161,7 +161,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"description\":\"travel expense\",\r\n   \"amount\":\"303\",\r\n   \"expense-group\":\"4abab1b8-b6dc-4c71-9328-5e581285f5be\"\r\n\r\n}",
+							"raw": "{\r\n   \"description\":\"travel expense jeej\",\r\n   \"amount\":\"308\",\r\n   \"expenseGroup\":\"613f419ad5db685b0f1ab026\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -220,6 +220,42 @@
 							"path": [
 								"expenses",
 								"8e27cf07-49a9-4bd5-aa48-4bed886bc2de"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by expense-group",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/expenses/613f3f2b3920afd40b7842aa",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"expenses",
+								"613f3f2b3920afd40b7842aa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get last-five expenses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/expenses/last-five-expenses",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"expenses",
+								"last-five-expenses"
 							]
 						}
 					},
@@ -294,14 +330,32 @@
 				{
 					"name": "edit income group",
 					"request": {
-						"method": "GET",
+						"method": "PUT",
 						"header": [],
-						"url": null
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"tratrablaaa35345345646\",\r\n    \"description\":\"income project\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/income-groups/613f1878db857b01f193d403",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"income-groups",
+								"613f1878db857b01f193d403"
+							]
+						}
 					},
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "delete income group",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -365,7 +419,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"description\":\"travel expense\",\r\n   \"amount\":\"303\",\r\n   \"income-group\":\"4abab1b8-b6dc-4c71-9328-5e581285f5be\"\r\n\r\n}",
+							"raw": "{\r\n   \"description\":\"travel expense4\",\r\n   \"amount\":\"303\",\r\n   \"incomeGroup\":\"613f441334ac5ff92a4e83a5\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -426,6 +480,34 @@
 								"bb8f9559-4a4a-4b64-b03c-ea255db20dbd"
 							]
 						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by income-group",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/incomes/incomegroup/613f441334ac5ff92a4e83a5",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"incomes",
+								"incomegroup",
+								"613f441334ac5ff92a4e83a5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get last five incomes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
 					},
 					"response": []
 				}
