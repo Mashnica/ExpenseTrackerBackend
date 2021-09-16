@@ -8,14 +8,14 @@ const mongoose = require("mongoose");
 const config = require('./config');
 const app = express();
 
-/*mongoose.connect("mongodb://localhost:27017/expensetrackerdb", {});
-app.use(express.json());*/
+
 
 const { db: { host, port, name } } = config;
 const connectionString = `mongodb://${host}:${port}/${name}`;
 mongoose.connect(connectionString);
 
 
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Hello world!!");
@@ -32,4 +32,4 @@ app.use(Router);
   console.log("Server is running at port 3000");
 
 
-app.listen(config.app.port);
+//app.listen(config.app.port);

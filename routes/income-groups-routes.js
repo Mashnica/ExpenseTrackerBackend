@@ -1,10 +1,12 @@
 const express = require("express");
 const incomeGroupRouter = express.Router();
 const incomegroupModel = require("../models/income-groups");
+const { validateName } = require("../helper/validation");
 
 incomeGroupRouter.get("/", async (req, res) => {
-  const incomegroups = await incomegroupModel.find({});
+  
   try {
+    const incomegroups = await incomegroupModel.find({});
     res.send(incomegroups);
   } catch (error) {
     res.status(500).send(error);
@@ -12,8 +14,9 @@ incomeGroupRouter.get("/", async (req, res) => {
 });
 
 incomeGroupRouter.get("/:id", async (req, res) => {
-  const incomegroups = await incomegroupModel.findOne({ id: req.params.id });
+  
   try {
+    const incomegroups = await incomegroupModel.findOne({ id: req.params.id });
     res.send(incomegroups);
   } catch (error) {
     res.status(500).send(error);
@@ -21,8 +24,10 @@ incomeGroupRouter.get("/:id", async (req, res) => {
 });
 
 incomeGroupRouter.post("/", async (req, res) => {
-  const incomegroups = new incomegroupModel(req.body);
+  
   try {
+    validateName(req.body.name);
+    const incomegroups = new incomegroupModel(req.body);
     await incomegroups.save();
     res.send(incomegroups);
   } catch (error) {
@@ -31,10 +36,11 @@ incomeGroupRouter.post("/", async (req, res) => {
 });
 
 incomeGroupRouter.put("/:id", async (req, res) => {
-  var query = { id: req.params.id };
-  newData = req.body;
-  const incomegroups = await incomegroupModel.findOneAndUpdate(query, req.body);
+  
   try {
+    var query = { id: req.params.id };
+    newData = req.body;
+    const incomegroups = await incomegroupModel.findOneAndUpdate(query, req.body);
     await incomegroups.save();
     res.send(incomegroups);
   } catch (error) {
@@ -43,8 +49,9 @@ incomeGroupRouter.put("/:id", async (req, res) => {
 });
 
 incomeGroupRouter.delete("/:id", async (req, res) => {
-  const incomegroups = await incomegroupModel.deleteOne({ id: req.params.id });
+  
   try {
+    const incomegroups = await incomegroupModel.deleteOne({ id: req.params.id });
     res.send(incomegroups);
   } catch (error) {
     res.status(500).send(error);

@@ -2,10 +2,16 @@ const express = require("express");
 const { now } = require("mongoose");
 const expenseRouter = express.Router();
 const expenseModel = require("../models/expenses");
+const {  validateAmount,validateGroupID } = require("../helper/validation");
+
+
+
+
 
 expenseRouter.get("/", async (req, res) => {
-  const expenses = await expenseModel.find({});
+  
   try {
+    const expenses = await expenseModel.find({});
     res.send(expenses);
   } catch (error) {
     res.status(500).send(error);
@@ -13,10 +19,12 @@ expenseRouter.get("/", async (req, res) => {
 });
 //find by expense-group
 expenseRouter.get("/expensegroup/:expensegroupId", async (req, res) => {
-  const expenses = await expenseModel.find({
-    expenseGroup: req.params.expensegroupId,
-  });
+  
   try {
+    validateGroupID(req.body.expensegroupId)
+    const expenses = await expenseModel.find({
+      expenseGroup: req.params.expensegroupId,
+    });
     res.send(expenses);
   } catch (error) {
     res.status(500).send(error);
@@ -25,11 +33,12 @@ expenseRouter.get("/expensegroup/:expensegroupId", async (req, res) => {
 
 // /last-five
 expenseRouter.get("/last-five", async (req, res) => {
-  const expenses = await expenseModel
+  
+  try {
+    const expenses = await expenseModel
     .find({})
     .sort({ dateUpdated: -1 })
     .limit(5);
-  try {
     res.send(expenses);
   } catch (error) {
     res.status(500).send(error);
@@ -37,8 +46,9 @@ expenseRouter.get("/last-five", async (req, res) => {
 });
 
 expenseRouter.get("/:id", async (req, res) => {
-  const expenses = await expenseModel.findOne({ id: req.params.id });
+  
   try {
+    const expenses = await expenseModel.findOne({ id: req.params.id });
     res.send(expenses);
   } catch (error) {
     res.status(500).send(error);
@@ -46,11 +56,13 @@ expenseRouter.get("/:id", async (req, res) => {
 });
 
 expenseRouter.post("/", async (req, res) => {
-  const result = req.body;
-  result.dateCreated = new Date(); //dateupdated
-  result.dateUpdated = new Date();
-  const expenses = new expenseModel(result);
+  
   try {
+    validateAmount(req.body.amount);
+    const result = req.body;
+    result.dateCreated = new Date(); 
+    result.dateUpdated = new Date();
+    const expenses = new expenseModel(result);
     await expenses.save();
     res.send(expenses);
   } catch (error) {
@@ -59,11 +71,12 @@ expenseRouter.post("/", async (req, res) => {
 });
 
 expenseRouter.put("/:id", async (req, res) => {
-  var query = { id: req.params.id };
-  const newData = req.body;
-  newData.dateUpdated = new Date();
-  const expenses = await expenseModel.findOneAndUpdate(query, newData);
+  
   try {
+    var query = { id: req.params.id };
+    const newData = req.body;
+    newData.dateUpdated = new Date();
+    const expenses = await expenseModel.findOneAndUpdate(query, newData);
     await expenses.save();
     res.send(expenses);
   } catch (error) {
@@ -72,8 +85,9 @@ expenseRouter.put("/:id", async (req, res) => {
 });
 
 expenseRouter.delete("/:id", async (req, res) => {
-  const expenses = await expenseModel.deleteOne({ id: req.params.id });
+  
   try {
+    const expenses = await expenseModel.deleteOne({ id: req.params.id });
     res.send(expenses);
   } catch (error) {
     res.status(500).send(error);

@@ -21,6 +21,7 @@ const ExpensesSchema = new mongoose.Schema({
   expenseGroup: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "ExpenseGroups",
+    required: true,
   },
 });
 

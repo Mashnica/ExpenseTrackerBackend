@@ -50,7 +50,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"travelend\",\r\n    \"description\":\"expense travefdsfdsl\"\r\n}",
+							"raw": "{\r\n     \"name\":\"travefdsfrwerd\",\r\n    \"description\":\"expense travefdsfdsl554\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -161,7 +161,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"description\":\"travel expense jeej\",\r\n   \"amount\":\"308\",\r\n   \"expenseGroup\":\"613f419ad5db685b0f1ab026\"\r\n\r\n}",
+							"raw": "{\r\n   \"description\":\"travel expense jeej\",\r\n   \"expenseGroup\":\"613f419ad5db685b0f1ab026\"\r\n    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -308,7 +308,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"tratrablaaa\",\r\n    \"description\":\"income project\"\r\n}",
+							"raw": "{\r\n    \"name\":\"income group\",\r\n    \"description\":\"income project\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -419,7 +419,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"description\":\"travel expense4\",\r\n   \"amount\":\"303\",\r\n   \"incomeGroup\":\"613f441334ac5ff92a4e83a5\"\r\n\r\n}",
+							"raw": "{\r\n   \"description\":\"project incomesss\",\r\n   \"amount\":\"3000\",\r\n   \"incomeGroup\":\"613f441334ac5ff92a4e83a5\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

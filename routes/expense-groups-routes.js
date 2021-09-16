@@ -1,10 +1,13 @@
+//const validate = require("../helper/validation");
 const express = require("express");
+const {  validateName } = require("../helper/validation");
 const expenseGroupRouter = express.Router();
 const expensegroupModel = require("../models/expense-group");
 
 expenseGroupRouter.get("/", async (req, res) => {
-  const expensegroups = await expensegroupModel.find({});
+  
   try {
+    const expensegroups = await expensegroupModel.find({});
     res.send(expensegroups);
   } catch (error) {
     res.status(500).send(error);
@@ -12,32 +15,37 @@ expenseGroupRouter.get("/", async (req, res) => {
 });
 
 expenseGroupRouter.get("/:id", async (req, res) => {
-  const expensegroups = await expensegroupModel.findOne({ id: req.params.id });
   try {
+    
+    const expensegroups = await expensegroupModel.findOne({ id: req.params.id });
     res.send(expensegroups);
   } catch (error) {
     res.status(500).send(error);
   }
 });
-
+//??
 expenseGroupRouter.post("/", async (req, res) => {
-  const expensegroup = new expensegroupModel(req.body);
+
   try {
+    validateName(req.body.name);
+    const expensegroup = new expensegroupModel(req.body);
     await expensegroup.save();
     res.send(expensegroup);
+  
   } catch (error) {
     res.status(500).send(error);
   }
 });
 
 expenseGroupRouter.put("/:id", async (req, res) => {
-  var query = { id: req.params.id };
-  newData = req.body;
-  const expensegroup = await expensegroupModel.findOneAndUpdate(
+  
+  try {
+    var query = { id: req.params.id };
+    newData = req.body;
+    const expensegroup = await expensegroupModel.findOneAndUpdate(
     query,
     req.body
   );
-  try {
     await expensegroup.save();
     res.send(expensegroup);
   } catch (error) {
@@ -46,10 +54,11 @@ expenseGroupRouter.put("/:id", async (req, res) => {
 });
 
 expenseGroupRouter.delete("/:id", async (req, res) => {
-  const expensegroups = await expensegroupModel.deleteOne({
-    id: req.params.id,
-  });
+  
   try {
+    const expensegroups = await expensegroupModel.deleteOne({
+      id: req.params.id,
+    });
     res.send(expensegroups);
   } catch (error) {
     res.status(500).send(error);

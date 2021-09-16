@@ -1,10 +1,12 @@
 const express = require("express");
 const incomesRouter = express.Router();
 const incomeModel = require("../models/incomes");
+const {  validateAmount,validateGroupID} = require("../helper/validation");
 
 incomesRouter.get("/", async (req, res) => {
-  const incomes = await incomeModel.find({});
+  
   try {
+    const incomes = await incomeModel.find({});
     res.send(incomes);
   } catch (error) {
     res.status(500).send(error);
@@ -13,10 +15,12 @@ incomesRouter.get("/", async (req, res) => {
 
 //find by income-group
 incomesRouter.get("/incomegroup/:incomegroupId", async (req, res) => {
-  const incomes = await incomeModel.find({
-    incomeGroup: req.params.incomegroupId,
-  });
+  
   try {
+    validateGroupID(req.body.incomegroupId)
+    const incomes = await incomeModel.find({
+      incomeGroup: req.params.incomegroupId,
+    });
     res.send(incomes);
   } catch (error) {
     res.status(500).send(error);
@@ -25,8 +29,9 @@ incomesRouter.get("/incomegroup/:incomegroupId", async (req, res) => {
 
 // /last-five
 incomesRouter.get("/last-five", async (req, res) => {
-  const incomes = await incomeModel.find({}).sort({ dateUpdated: -1 }).limit(5);
+  
   try {
+    const incomes = await incomeModel.find({}).sort({ dateUpdated: -1 }).limit(5);
     res.send(incomes);
   } catch (error) {
     res.status(500).send(error);
@@ -34,8 +39,9 @@ incomesRouter.get("/last-five", async (req, res) => {
 });
 
 incomesRouter.get("/:id", async (req, res) => {
-  const incomes = await incomeModel.findOne({ id: req.params.id });
+  
   try {
+    const incomes = await incomeModel.findOne({ id: req.params.id });
     res.send(incomes);
   } catch (error) {
     res.status(500).send(error);
@@ -43,11 +49,13 @@ incomesRouter.get("/:id", async (req, res) => {
 });
 
 incomesRouter.post("/", async (req, res) => {
-  const result = req.body;
-  result.dateCreated = new Date();
-  result.dateUpdated = new Date();
-  const income = new incomeModel(result);
+  
   try {
+    validateAmount(req.body.amount);
+    const result = req.body;
+    result.dateCreated = new Date();
+    result.dateUpdated = new Date();
+    const income = new incomeModel(result);
     await income.save();
     res.send(income);
   } catch (error) {
@@ -56,11 +64,12 @@ incomesRouter.post("/", async (req, res) => {
 });
 
 incomesRouter.put("/:id", async (req, res) => {
-  var query = { id: req.params.id };
-  const newData = req.body;
-  newData.dateUpdated = new Date();
-  const incomes = await incomeModel.findOneAndUpdate(query, newData);
+  
   try {
+    var query = { id: req.params.id };
+    const newData = req.body;
+    newData.dateUpdated = new Date();
+    const incomes = await incomeModel.findOneAndUpdate(query, newData);
     await incomes.save();
     res.send(incomes);
   } catch (error) {
@@ -69,8 +78,9 @@ incomesRouter.put("/:id", async (req, res) => {
 });
 
 incomesRouter.delete("/:id", async (req, res) => {
-  const incomes = await incomeModel.deleteOne({ id: req.params.id });
+  
   try {
+    const incomes = await incomeModel.deleteOne({ id: req.params.id });
     res.send(incomes);
   } catch (error) {
     res.status(500).send(error);
