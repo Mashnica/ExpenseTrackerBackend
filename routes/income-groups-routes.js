@@ -1,6 +1,5 @@
 const express = require("express");
 const incomeGroupRouter = express.Router();
-const incomeGroups = [];
 const incomegroupModel = require("../models/income-groups");
 
 incomeGroupRouter.get("/", async (req, res) => {

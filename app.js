@@ -1,12 +1,12 @@
 const { Router } = require("express");
 const express = require("express");
-const app = express();
 const expenseGroupRouter = require("./routes/expense-groups-routes.js");
 const expenseRouter = require("./routes/expenses-routes.js");
 const incomeGroupRouter = require("./routes/income-groups-routes.js");
 const incomesRouter = require("./routes/incomes-routes.js");
 const mongoose = require("mongoose");
 const config = require('./config');
+const app = express();
 
 /*mongoose.connect("mongodb://localhost:27017/expensetrackerdb", {});
 app.use(express.json());*/

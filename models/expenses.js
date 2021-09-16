@@ -3,11 +3,12 @@ const mongoose = require("mongoose");
 const ExpensesSchema = new mongoose.Schema({
   description: {
     type: String,
-    required: true,
+    required: false,
   },
   amount: {
     type: Number,
     default: 0,
+    required: true,
   },
   dateCreated: {
     type: Date,

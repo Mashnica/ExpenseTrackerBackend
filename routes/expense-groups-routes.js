@@ -1,6 +1,5 @@
 const express = require("express");
 const expenseGroupRouter = express.Router();
-let expenseGroups = [];
 const expensegroupModel = require("../models/expense-group");
 
 expenseGroupRouter.get("/", async (req, res) => {

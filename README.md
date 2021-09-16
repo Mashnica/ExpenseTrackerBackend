@@ -1,47 +1,51 @@
 # **Expense Tracker-backend app**
 ***
-**Installation**
+**Getting started:**
 --- 
-* **install express**
-  
-  npm install express --save
+      run npm install
 
 * **clone repository**
 
   git clone https://git.vegaitsourcing.rs/masa.micunovic/expense-tracker-backend-app.git
 
-* **install mongoose**
-
-  npm install express mongoose --save 
 
 * **run application**
 
   npm run start:dev
 
-
-* **git commands**
-  * git checkout feauture/database 
-  * git add .
-  * git commit -m "First commit"
-  * git push origin feature/database --on branch
-  * git merge master feature/database
-
 ***
 **Appliction functionalities**
 ---
   
-* CRUD expense-groups 
-    * getAll,getById,post,put and delete methods for expense-groups
-* CRUD expenses  
-    * getAll,getById,post,put and delete methods for expenses
+* CRUD methods for expense-groups 
+    * getAll  -returns all expense groups.
+    * getById -returns an element object representing the element whose id property matches the specified string.
+    * post - add a new expense group.
+    * put - update the expense group on the server. 
+    * delete - remove expense group whose id property matches the specified string.
+* CRUD methods for expenses  
+    * getAll  -returns all expenses.
+    * getById -returns an expense object representing the element whose id property matches the specified string.
+    * post - add a new expense.
+    * put - update the expense on the server. 
+    * delete - remove expense whose id property matches the specified string.
 * CRUD income-groups 
-    * getAll,getById,post,put and delete methods for income-groups
+    * getAll  -returns all income groups.
+    * getById -returns an income group object representing the element whose id property matches the specified string.
+    * post - add a new income group.
+    * put - update the income group on the server. 
+    * delete - remove income group whose id property matches the specified string.
 * CRUD incomes  
-    * getAll,getById,post,put and delete methods for incomes
+    * getAll  -returns all incomes.
+    * getById -returns an income  object representing the element whose id property matches the specified string.
+    * post - add a new income.
+    * put - update the income on the server. 
+    * delete - remove income  whose id property matches the specified string.
     
-* routes: /expenses/last-five and 
-            /incomes/last-five 
-              -show last 5 expenses and last 5 incomes changes
-* routes: /expensegroup/:expensegroupId and 
-            /incomegroup/:incomegroupId
-              -show filtering by group
+* routes: 
+    * (GET) /expenses/last-five -show last 5 expenses filtering by dateUpdated
+    * (GET) /incomes/last-five  -show last 5 incomes  filtering by dateUpdated
+
+* routes: 
+    * (GET) /expensegroup/:expensegroupId - show expenses filtering by  expense group
+    * (GET) /incomegroup/:incomegroupId -show incomes filtering by  income group

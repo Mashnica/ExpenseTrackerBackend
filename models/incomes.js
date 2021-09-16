@@ -4,11 +4,12 @@ const mongoose = require("mongoose");
 const IncomesSchema = new mongoose.Schema({
   description: {
     type: String,
-    required: true,
+    required: false,
   },
   amount: {
     type: Number,
     default: 0,
+    required: false,
   },
   dateCreated: {
     type: Date,
