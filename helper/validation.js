@@ -15,9 +15,9 @@ function validateName(name) {
     }
 
 }
-
+//amount is float 
  function validateAmount(amount) {
-    if(!amount || !isInteger(amount) ){
+    if(!amount || isNaN(amount) ){
         throw 'Amount must be number'
     }
 

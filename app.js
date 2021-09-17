@@ -32,4 +32,4 @@ app.use(Router);
   console.log("Server is running at port 3000");
 
 
-//app.listen(config.app.port);
+app.listen(config.app.port);
