@@ -9,7 +9,7 @@ const IncomesSchema = new mongoose.Schema({
   amount: {
     type: Number,
     default: 0,
-    required: false,
+    required: true,
   },
   dateCreated: {
     type: Date,
@@ -22,6 +22,7 @@ const IncomesSchema = new mongoose.Schema({
   incomeGroup: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "IncomeGroups",
+    required: true,
   },
 });
 

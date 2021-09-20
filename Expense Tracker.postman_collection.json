@@ -14,12 +14,22 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/expense-groups",
+							"raw": "{{URL}}/expense-groups?page=1&limit=3",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"expense-groups"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "3"
+								}
 							]
 						}
 					},
@@ -50,7 +60,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"travelend\",\r\n    \"description\":\"expense travefdsfdsl\"\r\n}",
+							"raw": "{\r\n     \"name\":\"travefdsfrwerd\",\r\n    \"description\":\"expense travefdsfdsl554\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -125,12 +135,22 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/expenses",
+							"raw": "{{URL}}/expenses?page=1&limit=3",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"expenses"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "3"
+								}
 							]
 						}
 					},
@@ -161,7 +181,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"description\":\"travel expense jeej\",\r\n   \"amount\":\"308\",\r\n   \"expenseGroup\":\"613f419ad5db685b0f1ab026\"\r\n\r\n}",
+							"raw": "{\r\n   \"description\":\"travel expense jeej\",\r\n   \"amount\": 380.56,\r\n   \"expenseGroup\":\"613f419ad5db685b0f1ab026\"\r\n    \r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -231,13 +251,24 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/expenses/613f3f2b3920afd40b7842aa",
+							"raw": "{{URL}}/expenses/expensegroup/613f419ad5db685b0f1ab026?page=1&limit=5",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"expenses",
-								"613f3f2b3920afd40b7842aa"
+								"expensegroup",
+								"613f419ad5db685b0f1ab026"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
 							]
 						}
 					},
@@ -272,12 +303,22 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/income-groups",
+							"raw": "{{URL}}/income-groups?page=0&limit=25",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"income-groups"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "25"
+								}
 							]
 						}
 					},
@@ -308,7 +349,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"tratrablaaa\",\r\n    \"description\":\"income project\"\r\n}",
+							"raw": "{\r\n    \"name\":\"income group\",\r\n    \"description\":\"income project\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -383,12 +424,22 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/incomes",
+							"raw": "{{URL}}/incomes?page=1&limit=25",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"incomes"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "25"
+								}
 							]
 						}
 					},
@@ -419,7 +470,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"description\":\"travel expense4\",\r\n   \"amount\":\"303\",\r\n   \"incomeGroup\":\"613f441334ac5ff92a4e83a5\"\r\n\r\n}",
+							"raw": "{\r\n   \"description\":\"project incomesss\",\r\n   \"amount\": 3000.09,\r\n   \"incomeGroup\":\"613f441334ac5ff92a4e83a5\"\r\n\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -489,7 +540,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}/incomes/incomegroup/613f441334ac5ff92a4e83a5",
+							"raw": "{{URL}}/incomes/incomegroup/613f441334ac5ff92a4e83a5?page=1&limit=2",
 							"host": [
 								"{{URL}}"
 							],
@@ -497,6 +548,16 @@
 								"incomes",
 								"incomegroup",
 								"613f441334ac5ff92a4e83a5"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								}
 							]
 						}
 					},
@@ -506,8 +567,23 @@
 					"name": "get last five incomes",
 					"request": {
 						"method": "GET",
-						"header": [],
-						"url": null
+						"header": [
+							{
+								"key": "Cache-Control",
+								"value": "no-cache",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{URL}}/incomes/last-five",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"incomes",
+								"last-five"
+							]
+						}
 					},
 					"response": []
 				}

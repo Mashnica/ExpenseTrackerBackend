@@ -1,10 +1,18 @@
 const express = require("express");
+const { validateName } = require("../helper/validation");
 const expenseGroupRouter = express.Router();
 const expensegroupModel = require("../models/expense-group");
 
 expenseGroupRouter.get("/", async (req, res) => {
-  const expensegroups = await expensegroupModel.find({});
+  const pageOptions = {
+    page: parseInt(req.query.page - 1, 10) || 0,
+    limit: parseInt(req.query.limit, 10) || 10,
+  };
   try {
+    const expensegroups = await expensegroupModel
+      .find({})
+      .skip(pageOptions.page * pageOptions.limit)
+      .limit(pageOptions.limit);
     res.send(expensegroups);
   } catch (error) {
     res.status(500).send(error);
@@ -12,8 +20,10 @@ expenseGroupRouter.get("/", async (req, res) => {
 });
 
 expenseGroupRouter.get("/:id", async (req, res) => {
-  const expensegroups = await expensegroupModel.findOne({ id: req.params.id });
   try {
+    const expensegroups = await expensegroupModel.findOne({
+      id: req.params.id,
+    });
     res.send(expensegroups);
   } catch (error) {
     res.status(500).send(error);
@@ -21,8 +31,9 @@ expenseGroupRouter.get("/:id", async (req, res) => {
 });
 
 expenseGroupRouter.post("/", async (req, res) => {
-  const expensegroup = new expensegroupModel(req.body);
   try {
+    validateName(req.body.name);
+    const expensegroup = new expensegroupModel(req.body);
     await expensegroup.save();
     res.send(expensegroup);
   } catch (error) {
@@ -31,13 +42,13 @@ expenseGroupRouter.post("/", async (req, res) => {
 });
 
 expenseGroupRouter.put("/:id", async (req, res) => {
-  var query = { id: req.params.id };
-  newData = req.body;
-  const expensegroup = await expensegroupModel.findOneAndUpdate(
-    query,
-    req.body
-  );
   try {
+    var query = { id: req.params.id };
+    newData = req.body;
+    const expensegroup = await expensegroupModel.findOneAndUpdate(
+      query,
+      req.body
+    );
     await expensegroup.save();
     res.send(expensegroup);
   } catch (error) {
@@ -46,10 +57,10 @@ expenseGroupRouter.put("/:id", async (req, res) => {
 });
 
 expenseGroupRouter.delete("/:id", async (req, res) => {
-  const expensegroups = await expensegroupModel.deleteOne({
-    id: req.params.id,
-  });
   try {
+    const expensegroups = await expensegroupModel.deleteOne({
+      id: req.params.id,
+    });
     res.send(expensegroups);
   } catch (error) {
     res.status(500).send(error);

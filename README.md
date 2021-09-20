@@ -1,8 +1,10 @@
 # **Expense Tracker-backend app**
 ***
 **Getting started:**
---- 
-      run npm install
+   * Link to nodejs installation   https://nodejs.org/en/download/  
+   * Link to mongodb installation  https://docs.mongodb.com/manual/installation/
+
+     run npm install
 
 * **clone repository**
 
